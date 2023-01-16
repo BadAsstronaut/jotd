@@ -1,6 +1,6 @@
 # Joke of the Day (JOTD) REST API
 
-This is a simple REST API for managing Jokes of the Day (JOTD) built using Python, FastAPI, SQLAlchemy and Databases.
+This is a simple REST API for managing Jokes of the Day (JOTD) built using Python and FastAPI.
 
 ## Getting Started
 
@@ -39,7 +39,7 @@ Assuming you have [docker installed](https://docs.docker.com/get-docker/), run:
 > ./scripts/build_run_local.sh
 ```
 
-This will expose the API at [](http://localhost:8000)
+This will expose the API at [http://localhost:8000]()
 
 ## Testing
 
@@ -51,11 +51,95 @@ With the API running on port 8000, run the test script:
 
 ## Endpoints
 
-- POST /jotd: Create a new JOTD
-- GET /jotd/{id}: Retrieve a specific JOTD by ID
-- GET /jotd/date/{date}: Retrieve a specific JOTD by date
-- PUT /jotd/{id}: Update a specific JOTD by ID
-- DELETE /jotd/{id}: Delete a specific JOTD by ID
+- `POST /jotd`: Create a new JOTD
+
+    _request body_
+
+    ```json
+    {
+        "text": "Why did the tomato turn red? Because it saw the salad dressing!",
+        "date": "2022-01-01",
+        "description": "A pun about salad"
+    }
+    ```
+
+    _response_
+
+    ```json
+    {
+            "jotd": {
+            "id": 1,
+            "text": "Why did the tomato turn red? Because it saw the salad dressing!",
+            "date": "2022-01-01",
+            "description": "A pun about salad"
+        }
+    }
+    ```
+
+- `GET /jotd/{id}`: Retrieve a specific JOTD by ID
+
+    _response_
+
+    ```json
+    {
+            "jotd": {
+            "id": 1,
+            "text": "Why did the tomato turn red? Because it saw the salad dressing!",
+            "date": "2022-01-01",
+            "description": "A pun about salad"
+        }
+    }
+    ```
+
+- `GET /jotd/date/{date}`: Retrieve a specific JOTD by date
+
+    _response_
+
+    ```json
+    {
+            "jotd": {
+            "id": 1,
+            "text": "Why did the tomato turn red? Because it saw the salad dressing!",
+            "date": "2022-01-01",
+            "description": "A pun about salad"
+        }
+    }
+    ```
+
+- `PUT /jotd/{id}`: Update a specific JOTD by ID
+
+    _request body_
+
+    ```json
+    {
+        "text": "Why did the tomato turn red? Because it saw the salad dressing!",
+        "date": "2022-01-01",
+        "description": "A pun about salad"
+    }
+    ```
+
+    _response_
+
+    ```json
+    {
+            "jotd": {
+            "id": 1,
+            "text": "Why did the tomato turn red? Because it saw the salad dressing!",
+            "date": "2022-01-01",
+            "description": "A pun about salad"
+        }
+    }
+    ```
+
+- `DELETE /jotd/{id}`: Delete a specific JOTD by ID
+
+    _response_
+
+    ```json
+    {
+        "message": "jotd deleted"
+    }
+    ```
 
 ## Dependencies
 
