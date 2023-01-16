@@ -1,0 +1,5 @@
+# Python virtual envs
+.venv
+
+# Editor config
+.vscode
