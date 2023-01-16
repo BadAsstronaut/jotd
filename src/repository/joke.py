@@ -35,8 +35,15 @@ def create_jotd(text: str, date: str, description: str | None) -> Tuple[types.JO
         session.add(jotd)
         session.commit()
         session.refresh(jotd)
+        assert jotd.id is not None
+        assert jotd.text is not None
+        assert jotd.date is not None
 
-    return types.JOTD(id=jotd.id, text=jotd.text, date=jotd.date, description=jotd.description), globals.HTTP_CREATED
+    return (types.JOTD(id=jotd.id,
+                       text=jotd.text,
+                       date=jotd.date,
+                       description=jotd.description),
+            globals.HTTP_CREATED)
 
 
 @ internal_err_handler
@@ -74,7 +81,11 @@ def update_jotd(jotd_id: int, text: str, date: str, description: str | None) -> 
         session.commit()
         session.refresh(jotd)
 
-    return jotd, globals.HTTP_OK
+    return (types.JOTD(id=jotd.id,
+                       text=jotd.text,
+                       date=jotd.date,
+                       description=jotd.description),
+            globals.HTTP_OK)
 
 
 @ internal_err_handler
