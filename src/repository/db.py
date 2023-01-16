@@ -20,12 +20,14 @@ class JOTD(Base):
     The ignored type errors are due to requiring a mypy plugin to support mapping sqlalchemy types
     '''
     __tablename__ = 'jotd'
-    id: Mapped[int] = Column(Integer, primary_key=True,
+    id: Mapped[int] = Column(Integer,
+                             primary_key=True,
                              index=True)  # type: ignore
     text: Mapped[str] = Column(String)  # type: ignore
-    date: Mapped[str] = Column(String, index=True)  # type: ignore
-    description: Mapped[str | None] = Column(
-        String, nullable=True)  # type: ignore
+    date: Mapped[str] = Column(String,
+                               index=True)  # type: ignore
+    description: Mapped[str | None] = Column(String,
+                                             nullable=True)  # type: ignore
 
 
 Base.metadata.create_all(engine)

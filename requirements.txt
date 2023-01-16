@@ -2,4 +2,3 @@ fastapi
 pydantic
 sqlalchemy
 uvicorn
-sqlalchemy[mypy]

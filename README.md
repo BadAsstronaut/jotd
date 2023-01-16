@@ -33,21 +33,36 @@ The API will be available at <http://localhost:8000/>.
 
 ### Run with Docker
 
-TODO
+Assuming you have [docker installed](https://docs.docker.com/get-docker/), run:
+
+```bash
+> ./scripts/build_run_local.sh
+```
+
+This will expose the API at [](http://localhost:8000)
+
+## Testing
+
+With the API running on port 8000, run the test script:
+
+```bash
+> ./scripts/test_jotd_api.sh
+```
 
 ## Endpoints
 
 - POST /jotd: Create a new JOTD
 - GET /jotd/{id}: Retrieve a specific JOTD by ID
+- GET /jotd/date/{date}: Retrieve a specific JOTD by date
 - PUT /jotd/{id}: Update a specific JOTD by ID
 - DELETE /jotd/{id}: Delete a specific JOTD by ID
-- GET /jotd: Retrieve a list of all JOTDs
 
 ## Dependencies
 
 - [FastAPI](https://fastapi.tiangolo.com/)
 - [Pydantic](https://docs.pydantic.dev/)
 - [SqlAlchemy](https://docs.sqlalchemy.org)
+- [Uvicorn](https://www.uvicorn.org/)
 
 ### Dev Dependencies
 

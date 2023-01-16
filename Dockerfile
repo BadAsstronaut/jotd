@@ -2,7 +2,7 @@ FROM python:3.10-bullseye
 
 RUN pip install --upgrade pip \
     && apt-get update \
-    && apt-get install -y python3-brlapi \
+    && apt-get install -y python3-brlapi sqlite3 \
     && adduser --disabled-login --gecos '' api_user
 
 USER api_user
