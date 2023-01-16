@@ -8,7 +8,7 @@ from functools import wraps
 from typing import Tuple
 import logging
 
-from db import Session, JOTD
+from repository.db import Session, JOTD
 from utils import globals, types
 
 
@@ -35,7 +35,8 @@ def create_jotd(text: str, date: str, description: str | None) -> Tuple[types.JO
         session.add(jotd)
         session.commit()
         session.refresh(jotd)
-    return types.JOTD(**dict(jotd)), globals.HTTP_CREATED
+
+    return types.JOTD(id=jotd.id, text=jotd.text, date=jotd.date, description=jotd.description), globals.HTTP_CREATED
 
 
 @ internal_err_handler
@@ -71,6 +72,8 @@ def update_jotd(jotd_id: int, text: str, date: str, description: str | None) -> 
         jotd.date = date
         jotd.description = description
         session.commit()
+        session.refresh(jotd)
+
     return jotd, globals.HTTP_OK
 
 
@@ -84,4 +87,4 @@ def delete_jotd(jotd_id: int) -> Tuple[None, int]:
             return None, globals.HTTP_NOT_FOUND
         session.delete(jotd)
         session.commit()
-    return None, globals.HTTP_OK
+    return None, globals.HTTP_NO_CONTENT
