@@ -26,6 +26,7 @@ Install the dependencies:
 Run the development server:
 
 ```sh
+(.venv) > cd src
 (.venv) > uvicorn main:app --reload
 ```
 

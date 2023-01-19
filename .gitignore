@@ -1,5 +1,9 @@
-# Python virtual envs
+# Python
 .venv
+__pycache__
 
 # Editor config
 .vscode
+
+# Local sqlite database
+src/jotd.db
